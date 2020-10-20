@@ -5,7 +5,7 @@ WORK=/work
 DATA=/data
 INPUT=hgnc_complete_set.txt
 OUTPUT=hgnc_complete_set.ttl
-URL=ftp://ftp.ebi.ac.uk/pub/databases/genenames/new/tsv/$INPUT
+URL=http://ftp.ebi.ac.uk/pub/databases/genenames/new/tsv/$INPUT
 FORCE_CONVERT=0
 
 # オプションの読み取り
@@ -25,13 +25,14 @@ now=`date "+%Y%m%d-%H%M%S"`
 echo "Started wget at $now"
 
 wget -N $URL 2> /wget.log
+
 chmod -R 666 $INPUT
 
 now=`date "+%Y%m%d-%H%M%S"`
 echo "Finished wget baseline at $now"
 
 cat /wget.log
-num_of_newfiles=`egrep " saved \[+[0-9]+\]" /wget.log | grep -v "'.listing' saved" | wc -l`
+num_of_newfiles=`egrep " saved \[+[0-9]+/+[0-9]+\]" /wget.log | grep -v "'.listing' saved" | wc -l`
 
 # アーカイブファイルに更新が無く、fオプションが指定されていない場合はコンバートを実行しない
 if [ $num_of_newfiles -eq 0 ] && [ $FORCE_CONVERT -eq 0 ]; then
