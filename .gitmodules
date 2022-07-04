@@ -1,3 +1,4 @@
 [submodule "hgnc"]
 	path = hgnc
 	url = https://github.com/med2rdf/hgnc.git
+	branch = master
