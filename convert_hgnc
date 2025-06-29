@@ -5,7 +5,7 @@ WORK=/work
 DATA=/data
 INPUT=hgnc_complete_set.txt
 OUTPUT=hgnc_complete_set.ttl
-URL=http://ftp.ebi.ac.uk/pub/databases/genenames/new/tsv/$INPUT
+URL=https://storage.googleapis.com/public-download-files/hgnc/tsv/tsv/$INPUT
 FORCE_CONVERT=0
 
 # オプションの読み取り
