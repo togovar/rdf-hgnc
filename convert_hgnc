@@ -4,7 +4,7 @@
 WORK=/work
 DATA=/data
 INPUT=hgnc_complete_set.txt
-OUTPUT=hgnc_complete_set.ttl
+OUTPUT=hgnc_complete_set.ttl.gz
 URL=https://storage.googleapis.com/public-download-files/hgnc/tsv/tsv/$INPUT
 FORCE_CONVERT=0
 
@@ -45,7 +45,7 @@ fi
 now=`date "+%Y%m%d-%H%M%S"`
 echo "Started convert at $now"
 
-ruby /hgnc/hgnc2ttl.rb ./$INPUT > /data/$OUTPUT
+ruby /hgnc/hgnc2ttl.rb ./$INPUT | gzip -c > /data/$OUTPUT
 
 now=`date "+%Y%m%d-%H%M%S"`
 echo "Finished convert at $now"
